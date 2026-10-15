@@ -3,7 +3,10 @@
 Live auctions for small sellers: a replacement for Facebook comment bidding.
 
 A 20-day full-stack learning project: Flutter, NestJS, gRPC, PostgreSQL, Python, Databricks,
-FastAPI and AWS (ECS, IAM, CloudWatch). See [docs/learning-plan.md](docs/learning-plan.md).
+FastAPI and AWS (ECS, IAM, CloudWatch).
+
+- [docs/course-outline.md](docs/course-outline.md) - the original 20-day course outline and resources
+- [docs/learning-plan.md](docs/learning-plan.md) - the day-by-day plan applying it to BidBoard
 
 ## Layout
 
