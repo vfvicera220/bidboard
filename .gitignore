@@ -1,0 +1,33 @@
+# Env and secrets
+.env
+*.pem
+*.p8
+*.key
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/mcp.json
+
+# Node
+node_modules/
+dist/
+coverage/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Flutter / Dart
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Terraform / CDK
+.terraform/
+*.tfstate*
+cdk.out/
