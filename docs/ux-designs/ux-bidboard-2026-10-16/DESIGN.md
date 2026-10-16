@@ -606,7 +606,7 @@ components:
 
 # BidBoard — Design
 
-> Composition references: [mockups/buyer-bidding.html](mockups/buyer-bidding.html) (buyer hero, states, batch page), [mockups/seller-screens.html](mockups/seller-screens.html) (dashboard, create, share, control room, results, blocked), [mockups/color-themes.html](mockups/color-themes.html) — **Ledger is the only chosen theme; the other four themes in that file are rejected.** Where a mockup and this document disagree, this document wins. In particular, the mockups still show the old live red (#DC2626), the old focus colour, hairline control borders, and a **Message on Messenger** action on Results and in the ⋯ menu — all superseded by this document.
+> Composition references: [mockups/buyer-bidding.html](mockups/buyer-bidding.html) (buyer hero, states, batch page), [mockups/seller-screens.html](mockups/seller-screens.html) (dashboard, create, share, control room, results, blocked), [mockups/color-themes.html](mockups/color-themes.html) — **Ledger is the only chosen theme; the other four themes in that file are rejected.** Where a mockup and this document disagree, this document wins.
 
 ## Brand & Style
 
@@ -734,7 +734,7 @@ The logic: things you *tap* are 8px, things that *label* are 6px, things that *c
 
 **Photo gallery** (`{components.photo-gallery}`, `{components.photo-counter}`) — `{spacing.photo-block}` block, `{rounded.lg}`, swipe between up to 6 photos plus 44px previous/next buttons (single-pointer alternative). The counter "1/6" sits bottom-right on `{colors.surface}`. See buyer-bidding.html · Hero.
 
-**Bid action bar** (`{components.bid-action-bar}`) — fixed to the bottom of the item page on `{colors.surface}` with a 1px `{colors.ink}` top rule. Row 1: `−` stepper · amount · `+` stepper (grid 48 / 1fr 1fr / 48). Row 2: **Bid ₱4,600** (`button-bid`, primary, left half) and **Buyout ₱8,000** (`button-buyout`, secondary outline, right half), equal width, both 48px. Buyout is absent when the listing has no buyout price, and hidden once any bid reaches the buyout price; Bid then takes the full row. When any control is disabled, a reason line in `meta` sits above row 2 ("Bid unavailable — reconnecting"). See buyer-bidding.html · Hero.
+**Bid action bar** (`{components.bid-action-bar}`) — fixed to the bottom of the item page on `{colors.surface}` with a 1px `{colors.ink}` top rule. Row 1: `−` stepper · amount · `+` stepper (grid 48 / 1fr 1fr / 48). Row 2: **Bid ₱4,600** (`button-bid`, primary, left half) and **Buyout ₱8,000** (`button-buyout`, secondary outline, right half), equal width, both 48px. Buyout is absent when the listing has no buyout price, and steps aside while the selected amount equals the buyout price; Bid then takes the full row. A bid at the buyout price ends the item like Buyout, so its label reads "Bid ₱8,000 · wins now" (buyer-bidding.html · State H). When any control is disabled, a reason line in `meta` sits above row 2 ("Bid unavailable — reconnecting"). See buyer-bidding.html · Hero.
 
 - **Submitting** (`{components.button-bid-submitting}`) — the Bid label becomes "Placing ₱4,600…" with a small static-or-spinning ring; stepper, amount and Buyout switch to their disabled variants until the server answers.
 - **Disabled** (`{components.button-bid-disabled}`, `{components.button-buyout-disabled}`, `{components.bid-stepper-button-disabled}`, `{components.button-primary-disabled}`, `{components.input-disabled}`) — `{colors.surface-disabled}` fill, `{colors.ink-disabled}` label, hairline border; always paired with a reason in text.
@@ -761,7 +761,7 @@ The logic: things you *tap* are 8px, things that *label* are 6px, things that *c
 - Winning — `status-banner-winning`: "✓ You're winning — you're the top bidder at ₱4,500" (label in `{colors.success-label}`).
 - Open-ended — `status-banner-open`: "**Open** — Liza closes this manually".
 
-See buyer-bidding.html · States A–C.
+See buyer-bidding.html · States A–F.
 
 **Stats grid** (`{components.stats-grid}`) — 4 cells separated by 1px `{colors.border}` gaps inside a `{rounded.lg}` block. Buyer: Bids · Incr · Next · Buyout. Seller item: Bids · Incr · Base · Buyout. Control room: Bids · Bidders · With bids · Total. Dashboard and results use the same grid with 3–4 cells. A missing value shows "—".
 
@@ -773,9 +773,9 @@ See buyer-bidding.html · States A–C.
 
 **Dashboard auction row** (`{components.dashboard-auction-row}`) — batch or item title, item/bid counts in `meta`, and on the right either LIVE pill + countdown, "● OPEN", "Starts Fri 8:00 PM", "Ended" or "Draft". See seller-screens.html §1.
 
-**Results winner card** (`{components.results-winner-card}`) — item title, winner's full name, amount (mono), status chip, then **Mark paid** · **Mark unpaid** (quiet) and, once Unpaid, **Offer to next bidder** (secondary). There is no Messenger action on this card: winners message the seller. See seller-screens.html §5 (its Message on Messenger button is superseded).
+**Results winner card** (`{components.results-winner-card}`) — item title, winner's full name, amount (mono), status chip, then **Mark paid** · **Mark unpaid** (quiet) and, once Unpaid, **Offer to next bidder** (secondary). There is no Messenger action on this card: winners message the seller. See seller-screens.html §5.
 
-**Win panel** (`{components.win-panel}`) — "You won." in `sheet-title`, item title, winning amount in `price-hero-compact`, the line "Message Liza to arrange payment." and one full-width primary button **Message Liza on Messenger** that opens the seller's m.me link.
+**Win panel** (`{components.win-panel}`) — "You won." in `sheet-title`, item title, winning amount in `price-hero-compact`, the line "Message Liza to arrange payment." and one full-width primary button **Message Liza on Messenger** that opens the seller's m.me link. See buyer-bidding.html · State I.
 
 **Status chip** (`{components.status-chip}`) — ink label on tint, 1px status border, 8px status dot, `{rounded.sm}`: **Awaiting payment** (`status-chip-awaiting`), **Paid** (`status-chip-paid`), **Unpaid** (`status-chip-unpaid`), **No bids** (`status-chip-no-bids`), and **Open** (`status-chip-open`). The word is always present.
 

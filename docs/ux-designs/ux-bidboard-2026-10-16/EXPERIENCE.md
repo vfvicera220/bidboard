@@ -8,7 +8,7 @@ sources: [.memlog.md]
 
 # BidBoard — Experience
 
-> Composition references: [mockups/buyer-bidding.html](mockups/buyer-bidding.html), [mockups/seller-screens.html](mockups/seller-screens.html), [mockups/color-themes.html](mockups/color-themes.html) (Ledger only). There is no upstream PRD; `.memlog.md` is the only source. Where a mockup and this document disagree, this document wins — notably, the **Message on Messenger** action on the seller Results screen and in the ladder ⋯ menu is superseded: winners message the seller, not the other way round.
+> Composition references: [mockups/buyer-bidding.html](mockups/buyer-bidding.html), [mockups/seller-screens.html](mockups/seller-screens.html), [mockups/color-themes.html](mockups/color-themes.html) (Ledger only). There is no upstream PRD; `.memlog.md` is the only source. Where a mockup and this document disagree, this document wins.
 
 ## Foundation
 
@@ -32,11 +32,11 @@ BidBoard moves Facebook-group auctions off the comment thread. Facebook stays th
 | Surface | Reached from | Purpose | Mockup |
 |---|---|---|---|
 | Batch page | Shared link in a Facebook post (e.g. `bidboard.app/liza/b/0416`). Single-item links skip it and open Item live bidding directly. | All lots in a batch with current bid, each lot's own status and the buyer's own standing per lot | buyer-bidding.html · Secondary |
-| Item live bidding | Lot row on the batch page; direct link for single-item auctions; email links | Watch and bid on one item: price, stats, ladder, action bar | buyer-bidding.html · Hero + States A–C |
+| Item live bidding | Lot row on the batch page; direct link for single-item auctions; email links | Watch and bid on one item: price, stats, ladder, action bar | buyer-bidding.html · Hero + States A–H |
 | Sign-in sheet | First tap on Bid or Buyout while signed out | Sign in with Facebook, then complete the bid that was interrupted | — (not mocked; spec in DESIGN.md) |
 | Buyout confirmation sheet | Tap Buyout | Confirm buying the item outright at the buyout price | — (confirmation-sheet pattern) |
 | My bids | Outbid / won emails; navigation entry (see OQ-2) | Every item the buyer has bid on and their status on each | — (not mocked; spec in DESIGN.md) |
-| Win screen | Won email; the item page at close when the buyer leads; a confirmed buyout | "You won. Message Liza to arrange payment." with **Message Liza on Messenger** | — (not mocked; spec in DESIGN.md) |
+| Win screen | Won email; the item page at close when the buyer leads; a confirmed buyout | "You won. Message Liza to arrange payment." with **Message Liza on Messenger** | buyer-bidding.html · State I |
 
 ### Seller surfaces
 
@@ -47,14 +47,14 @@ Mobile navigation is a bottom tab bar: **Auctions · Results · Blocked · Accou
 | Dashboard | Sign-in; Auctions tab | Today's numbers, **+ New auction**, Live · Scheduled · Ended · Drafts [ASSUMPTION — Drafts segment] | seller-screens.html §1 |
 | Create · Step 1 Format | + New auction | Single item / Batch; Timed (date + time) / Open-ended | §2 Step 1 |
 | Create · Step 2 Item form | Step 1 "Next: add items"; batch "+ Add item" / row tap | Photos (≤6, first is cover), title, description, base, increment, optional buyout | §2 Step 2 |
-| Create · Batch items | Step 2 in batch mode | List of items; Save draft; Publish · N items (edit/cancel rules OQ-17) | §2 Batch variant |
-| Seller profile | First **Publish** (required once); Account tab | Shop name, shop link (`bidboard.app/liza`), and **Messenger link** (`m.me/…`) shown to every winner | — (not mocked; uses `input`) |
+| Create · Batch items | Step 2 in batch mode | List of items; Save draft; Publish · N items (edit/cancel rules OQ-16) | §2 Batch variant |
+| Seller profile | First **Publish** (required once); Account tab | Shop name, shop link (`bidboard.app/liza`), and **Messenger link** (`m.me/…`) shown to every winner | §7 (first publish + Account tab) |
 | Share | Publish | Copy link, editable Facebook caption, Open Facebook, Go to control room | §3 |
 | Live control room | Tapping a live dashboard row; Share → Go to control room | One row per item; batch stats; Share link; Close all | §4 batch overview (light/dark/laptop) |
 | Item ladder | Tapping a control-room row (laptop: right-hand detail panel) | Full bid history with real names, trust signal, ⋯ menu, Close now | §4 item ladder |
 | Open-ended item control | Tapping an open-ended dashboard row | Ladder without a clock; Close & award | §4 open-ended |
 | Close-all sheet | Close all | Outcome in numbers; confirm or keep bidding open | §4 Close all confirmation |
-| Results | Results tab; a batch ending | Per-item winner (full name), amount, payment status; **Mark paid** / **Mark unpaid** / **Offer to next bidder** | §5 (its Message on Messenger button is superseded) |
+| Results | Results tab; a batch ending | Per-item winner (full name), amount, payment status; **Mark paid** / **Mark unpaid** / **Offer to next bidder** | §5 |
 | Blocked bidders | Blocked tab | Per-seller private blocklist; Unblock | §6 (list + empty) |
 
 The **Account** tab holds the Seller profile; anything else it contains is open (OQ-3).
@@ -74,6 +74,7 @@ Plain and direct. Say what happened, then what to do, with the real number. No e
 | Anti-snipe extension | "Bid in the last 30s — closing extended to 00:30" | "Anti-sniping protocol engaged" |
 | Open-ended | "Open — Liza closes this manually" | "No end date" |
 | Bid button | "Bid ₱4,600" | "Place bid" / "Submit" |
+| Bid at the buyout price | "Bid ₱8,000 · wins now" | "Bid ₱8,000" (hides that it ends the item) |
 | Submitting | "Placing ₱4,600…" | "Please wait" |
 | Bid failed | "Your bid wasn't placed — someone bid ₱4,700 first. Next bid: ₱4,800." | "Error 409" |
 | Off-step amount | "Bids go up in ₱100 steps. Try ₱4,600 or ₱4,700." | "Invalid amount" |
@@ -103,8 +104,8 @@ Behavioural rules. Visual specs live in `DESIGN.md` → Components.
 |---|---|---|
 | Bid action bar (`{components.bid-action-bar}`) | Item live bidding | Fixed to the bottom; always visible while the item is biddable. Row 1 stepper, row 2 Bid + Buyout side by side. Removed when the item closes. Any disabled control shows its reason in text above row 2. Replaced by the blocked notice for a blocked buyer. |
 | Bid stepper (`{components.bid-stepper-button}`, `{components.bid-amount}`) | Action bar | Starts at the next valid bid. `+`/`−` move by the listing increment; `−` is disabled at the next valid bid, `+` at the ceiling. Tapping the amount allows typing a custom amount (see Interaction Primitives). If a new bid overtakes the selected amount, the amount resets to the new next valid bid and that is announced [ASSUMPTION]. |
-| Bid button (`{components.button-bid}`) | Action bar | Label always mirrors the stepper amount. One tap places the bid — no confirmation sheet for ordinary bids [ASSUMPTION]. Signed-out tap opens the Sign-in sheet first. While submitting it reads "Placing ₱4,600…" and the whole bar is locked. |
-| Buyout button (`{components.button-buyout}`) | Action bar | Opens the Buyout confirmation sheet. Absent if the listing has no buyout; hidden as soon as any bid reaches the buyout price (Bid then spans the row). |
+| Bid button (`{components.button-bid}`) | Action bar | Label always mirrors the stepper amount. One tap places the bid — no confirmation sheet for ordinary bids [ASSUMPTION]. Signed-out tap opens the Sign-in sheet first. While submitting it reads "Placing ₱4,600…" and the whole bar is locked. When the selected amount equals the buyout price the label reads "Bid ₱8,000 · wins now", because that bid ends the item like Buyout. |
+| Buyout button (`{components.button-buyout}`) | Action bar | Opens the Buyout confirmation sheet. Absent if the listing has no buyout (Bid then spans the row). Also steps aside while the buyer's selected amount equals the buyout price, since "Bid ₱8,000 · wins now" does the same thing [ASSUMPTION]. A bid at the buyout price ends the item, so Buyout never outlives it. |
 | Price block + tick (`{components.price-block}`, `{components.price-tick}`) | Item page; seller item view | Updates live. Each new bid swaps the figure and shows `▲ +(increment)` with a `{motion.flash-duration}` flash, at most once per `{motion.flash-min-interval}`. With no bids it shows "STARTING BID" and the base price. |
 | LIVE pill + countdown (`{components.live-pill}`, `{components.countdown}`) | Timed items, batch header, dashboard rows | Counts down every second. Jumps forward when an anti-snipe extension lands on that item. In a batch each item has its own close; the batch header shows the scheduled close. |
 | Reconnecting line (`{components.reconnecting-line}`) | Item page, control room | Replaces the countdown while the live stream is down. |
@@ -125,7 +126,7 @@ Behavioural rules. Visual specs live in `DESIGN.md` → Components.
 | Dashboard auction row (`{components.dashboard-auction-row}`) | Dashboard | Tap opens the control room (live), Open-ended item control (open), Create (draft) or Results (ended). |
 | Segmented control (`{components.segmented-control}`) | Dashboard | Live (n) · Scheduled (n) · Ended · Drafts. Exposed as a tab list with the selected segment marked. |
 | Tab bar (`{components.tab-bar}`) / Desktop nav (`{components.desktop-nav}`) | Seller | Switches top-level surface; the active item is exposed as selected/current. |
-| Item form controls (`input`, `toggle`, `increment-chip`, `option-card`, `step-progress`) | Create; Seller profile | Inline validation on blur and on save, naming the exact fix. Buyout is an optional toggle (exposed as a switch with its label); when on, it must exceed base. Increment is a one-tap chip (₱50 / ₱100 / ₱500; custom increments OQ-16). Option cards behave as a radio group. Step progress is read-only. |
+| Item form controls (`input`, `toggle`, `increment-chip`, `option-card`, `step-progress`) | Create; Seller profile | Inline validation on blur and on save, naming the exact fix. Buyout is an optional toggle (exposed as a switch with its label); when on, it must exceed base. Increment is a one-tap chip (₱50 / ₱100 / ₱500; custom increments OQ-15). Option cards behave as a radio group. Step progress is read-only. |
 | Photo slot (`photo-slot`) | Create step 2 | Tap an empty slot to add; each photo has a menu with **Make cover**, **Move left**, **Move right**, **Remove** (single-pointer alternative to any drag reordering). Upload shows progress; a failed upload shows "Photo didn't upload. Tap to retry." |
 | Share caption | Share | Pre-filled with link, close time, anti-snipe rule and house rule; editable; character count shown. Copy caption copies and shows "Copied ✓" (`{components.copy-feedback}`); Open Facebook hands off to the Facebook app or site. |
 | Quiet / destructive buttons (`{components.button-quiet}`, `{components.button-destructive}`) | Rows, menus | Quiet buttons act immediately (low stakes, reversible). Destructive menu items act immediately only when reversible (Block); irreversible bulk actions go through a confirmation sheet. |
@@ -153,14 +154,14 @@ Behavioural rules. Visual specs live in `DESIGN.md` → Components.
 | Bid failed — outbid while submitting | Item page | `status-banner-failed`: "Your bid wasn't placed — someone bid ₱4,700 first. Next bid: ₱4,800." Price updates; stepper resets to the new next valid bid. |
 | Bid failed — auction closed | Item page | "Your bid wasn't placed — bidding closed before it arrived." Moves to the closed state. |
 | Bid failed — network | Item page | "Your bid didn't reach us. Check your connection and tap Bid ₱4,600 to try again." No automatic retry; the amount is kept and re-validated [ASSUMPTION]. |
-| Disabled controls | Item page; Create; sheets | Disabled tokens (`{components.button-bid-disabled}` etc.) plus a reason in text: "Bid unavailable — reconnecting", "Bid unavailable — loading the live price", "Lower bid unavailable — ₱4,600 is the lowest valid bid". The reason is also the control's accessible hint. |
+| Disabled controls | Item page; Create; sheets | Disabled tokens (`{components.button-bid-disabled}` etc.) plus a reason in text: "Bid unavailable — reconnecting", "Bid unavailable — loading the live price", "Lower bid unavailable — ₱4,600 is the lowest valid bid", "Higher bid unavailable — ₱8,000 is the buyout price". The reason is also the control's accessible hint. |
 | Offline / reconnecting | Item page, control room | `{components.reconnecting-line}` replaces the countdown, the flash freezes, and Bid/Buyout are disabled until the stream resumes and the price is re-confirmed. On reconnect, apply the latest state without replaying flashes for missed bids. [ASSUMPTION] (timeout before an error: OQ-5) |
 | Outbid | Item page; batch lot row; email | `status-banner-outbid` with the next bid amount; lot row status "Outbid"; outbid email. |
 | Winning | Item page; batch lot row | `status-banner-winning`; lot row "You lead"; ladder shows the buyer as "You". |
 | Extended (anti-snipe) | Item page; all viewers | That item's clock jumps to the new close; `status-banner-extended` "Bid in the last 30s — closing extended to 00:30" for `{motion.extended-banner-lifetime}` or until the next bid, then the viewer's standing banner (Outbid / Winning) returns. Other items in the batch are not extended. |
-| Buyout reached | Item page | When any bid reaches the buyout price, Buyout disappears for everyone; an open Buyout sheet closes with "Buyout is no longer available — bids have reached ₱8,000." |
+| Buyout reached | Item page | A bid at the buyout price ends the item immediately, exactly like Buyout (see Closed — bought out). Any other viewer's open Buyout sheet closes with "Buyout is no longer available — this item just sold for ₱8,000." |
 | Closed — won | Item page → Win screen; email | Action bar removed; Win screen "You won. Message Liza to arrange payment." with **Message Liza on Messenger**. |
-| Closed — bought out | All viewers of that item | Item closes immediately; the buyer gets the Win screen; everyone else sees "Sold" and the final price. |
+| Closed — bought out | All viewers of that item | Via Buyout or a bid at the buyout price: the item closes immediately; the buyer gets the Win screen; everyone else sees "Sold" and the final price. |
 | Closed — lost / sold | Item page; batch lot row | Action bar removed; lot row "Sold"; final price and winner (shortened) shown. |
 | Closed early | All bidders | Email "auction closed early" (Close all). |
 | Open-ended | Item page; seller item control | `● OPEN` + `status-banner-open` "Open — Liza closes this manually"; no clock; no anti-snipe. Seller sees **Close & award**. |
@@ -176,9 +177,9 @@ Behavioural rules. Visual specs live in `DESIGN.md` → Components.
 ## Interaction Primitives
 
 - **Bid stepper** — the primary path. One tap on `+`/`−` changes the amount by the listing increment; the Bid label updates instantly. The floor is the next valid bid: **the base price when there are no bids**, otherwise current bid + increment. The top is the ceiling (below).
-- **Custom amount** — tap the amount to type. A custom amount must sit on the bid ladder: **current bid + n × increment** (n ≥ 1), or **base + n × increment** (n ≥ 0) when there are no bids. The **ceiling** is the buyout price, or **10× the current bid** when the listing has no buyout (10× the base price when there are no bids yet [ASSUMPTION]). Off-step, over-ceiling or below-floor amounts keep Bid disabled with the inline message in State Patterns. The stepper remains the default; custom entry is secondary.
+- **Custom amount** — tap the amount to type. A custom amount must sit on the bid ladder: **current bid + n × increment** (n ≥ 1), or **base + n × increment** (n ≥ 0) when there are no bids. The **ceiling** is the buyout price, or **10× the current bid** when the listing has no buyout (10× the base price when there are no bids yet [ASSUMPTION]). Off-step, over-ceiling or below-floor amounts keep Bid disabled with the inline message in State Patterns. An amount **at** the buyout price is valid and wins outright (see Buyout); the stepper's `+` is disabled there with "Higher bid unavailable — ₱8,000 is the buyout price". The stepper remains the default; custom entry is secondary.
 - **Bid** — one tap, no confirm [ASSUMPTION]. The outcome shows in place: ladder row, price flash, Winning banner, polite "Bid ₱4,600 placed. You're winning."
-- **Buyout** — Buyout opens a confirmation sheet: "Buy Seiko 5 SNK809 now for ₱8,000? Bidding on this item ends and you win it." with **Buyout ₱8,000** and a safe **Keep bidding**. On confirm, **that item ends immediately and the buyer wins** at the buyout price; other items in a batch are unaffected. Buyout is hidden once any bid reaches the buyout price (what bidding does after that: OQ-15).
+- **Buyout** — Buyout opens a confirmation sheet: "Buy Seiko 5 SNK809 now for ₱8,000? Bidding on this item ends and you win it." with **Buyout ₱8,000** and a safe **Keep bidding**. On confirm, **that item ends immediately and the buyer wins** at the buyout price; other items in a batch are unaffected. **A bid equal to the buyout price ends the item immediately, exactly like Buyout** — same win, same Win screen, same "Sold" for everyone else — so no bid can ever follow it. Whether reached by the stepper or a typed amount, the Bid button then reads "Bid ₱8,000 · wins now" and Buyout steps aside [ASSUMPTION — layout]. It is still one tap with no sheet, like any bid [ASSUMPTION]; the label carries the consequence.
 - **Anti-snipe (timed only)** — if a bid lands in the last 30 seconds, **that item's** close moves to **bid time + 30s**. There is **no cap** on extensions; each late bid can extend again. In a batch, only the item bid on is extended; items close independently. Every viewer of that item sees the clock jump and the Extended banner.
 - **Close now (seller, one item)** — the button names the outcome ("Close now · Marco R. wins ₱4,600"). Ends just that item. Confirmation and email: OQ-13.
 - **Close all (seller, batch)** — always through the Close-all sheet: items still open, winners, unsold, total; "Closing can't be undone."; then **Close all 6 items** or **Keep bidding open**. Bidders are emailed that the auction closed early; winners also get the won email [ASSUMPTION].
@@ -328,6 +329,5 @@ Failure: if Ana declines or doesn't respond, the Casio stays **Unpaid** and unso
 | OQ-12 | Buyer name-shortening rule — "Marco R." and "J***" both appear in mockups. | Privacy and consistency; must be enforced server-side before any buyer-facing ladder API ships. |
 | OQ-13 | Does Close now on a single item (and Close & award) need a confirmation sheet, and does it trigger the "closed early" email? | Mockups show a direct button; Close all has a sheet. |
 | OQ-14 | Currency: mockups use ₱ throughout — is the product single-currency? | Formatting; store ISO currency code + minor units from day one either way. |
-| OQ-15 | Once a bid reaches the buyout price, does the item keep taking bids? The custom ceiling (= buyout) would block every higher bid, and a bid *at* the buyout price doesn't end the item the way Buyout does. | Item state machine and the ceiling rule. |
-| OQ-16 | Can sellers set a custom increment beyond ₱50 / ₱100 / ₱500? | Fixed chips are category-specific in a category-agnostic product. |
-| OQ-17 | Editing and cancelling: which fields can change on a Draft, Scheduled or Live auction (e.g. buyout or increment once bids exist), and can a Scheduled or Live auction be cancelled? | Changes server-side bid validation mid-auction. |
+| OQ-15 | Can sellers set a custom increment beyond ₱50 / ₱100 / ₱500? | Fixed chips are category-specific in a category-agnostic product. |
+| OQ-16 | Editing and cancelling: which fields can change on a Draft, Scheduled or Live auction (e.g. buyout or increment once bids exist), and can a Scheduled or Live auction be cancelled? | Changes server-side bid validation mid-auction. |

@@ -1,35 +1,39 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BidBoard · Seller key screens (Ticker-rounded, Ledger)</title><style>
-/* Tokens copied from direction-ticker-rounded.html (Ledger). Colour only for status. */
-.L{--bg:#F5F5F4;--sf:#FFFFFF;--tx:#18181B;--t2:#52525B;--bd:#E4E4E7;--pr:#18181B;--onp:#FFFFFF;--ac:#4F46E5;--lv:#DC2626;--onl:#FFFFFF;--ok:#15803D;--wn:#A16207;--dg:#B91C1C;--tint:#DEEDE4;--ph:#E0E0E1;--wnt:#FEF3C7;--dgt:#FEE2E2;--act:#EEF2FF;--scrim:rgba(24,24,27,.55)}
-.D{--bg:#09090B;--sf:#18181B;--tx:#FAFAFA;--t2:#A1A1AA;--bd:#2E2E33;--pr:#FAFAFA;--onp:#09090B;--ac:#818CF8;--lv:#F87171;--onl:#09090B;--ok:#4ADE80;--wn:#FACC15;--dg:#F87171;--tint:#1F3429;--ph:#313135;--wnt:#2A2410;--dgt:#2D1414;--act:#1E1B3A;--scrim:rgba(0,0,0,.65)}
+/* Ledger final tokens — source of truth: DESIGN.md frontmatter. Colour only for status. */
+.L{--bg:#F5F5F4;--sf:#FFFFFF;--tx:#18181B;--t2:#52525B;--bd:#E4E4E7;--bs:#8A8A93;--fc:#6366F1;--sfd:#F4F4F5;--ikd:#71717A;--okl:#137638;--pr:#18181B;--onp:#FFFFFF;--ac:#4F46E5;--lv:#D02222;--onl:#FFFFFF;--ok:#15803D;--wn:#A16207;--dg:#B91C1C;--tint:#DEEDE4;--ph:#E0E0E1;--wnt:#FEF3C7;--dgt:#FEE2E2;--act:#EEF2FF;--scrim:rgba(24,24,27,.55)}
+.D{--bg:#09090B;--sf:#18181B;--tx:#FAFAFA;--t2:#A1A1AA;--bd:#2E2E33;--bs:#6A6A72;--fc:#818CF8;--sfd:#27272A;--ikd:#8A8A93;--okl:#4ADE80;--pr:#FAFAFA;--onp:#09090B;--ac:#818CF8;--lv:#F87171;--onl:#09090B;--ok:#4ADE80;--wn:#FACC15;--dg:#F87171;--tint:#1F3429;--ph:#313135;--wnt:#2A2410;--dgt:#2D1414;--act:#1E1B3A;--scrim:rgba(0,0,0,.65)}
 
+:root{--sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;--mono:"JetBrains Mono","Roboto Mono",ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#D4D4D8;color:#18181B;padding:32px;line-height:1.4}
+body{font-family:var(--sans);background:#D4D4D8;color:#18181B;padding:32px;line-height:1.4}
 .intro{max-width:1100px;margin:0 auto 28px;background:#fff;border:1px solid #E4E4E7;border-radius:12px;padding:20px 24px}
 .intro h1{font-size:22px;margin-bottom:6px}.intro p{font-size:15px;color:#3F3F46;margin-top:6px}.intro b{color:#18181B}
 h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .row{display:flex;gap:32px;flex-wrap:wrap;justify-content:center;align-items:flex-start;margin-bottom:40px}
-.lbl{font:600 12px/1 -apple-system,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#3F3F46;margin:0 0 10px 6px}
+.lbl{font:600 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#3F3F46;margin:0 0 10px 6px}
 .cap{max-width:390px;margin:10px 6px 0;font-size:13px;color:#3F3F46}.cap b{color:#18181B}
 .phone{width:390px;background:var(--bg);color:var(--tx);border:10px solid #111;border-radius:48px;overflow:hidden;position:relative;display:flex;flex-direction:column;min-height:844px}
-.sb{display:flex;justify-content:space-between;font:600 13px/1 -apple-system,sans-serif;padding:12px 22px 6px;color:var(--tx)}
+.sb{display:flex;justify-content:space-between;font:600 13px/1 var(--sans);padding:12px 22px 6px;color:var(--tx)}
 .url{margin:2px 12px 6px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;font-size:12px;color:var(--t2);text-align:center;padding:6px}
 .ph{background:var(--ph);position:relative;display:flex;align-items:center;justify-content:center;color:var(--t2);font-size:12px}
-.live{display:inline-flex;align-items:center;gap:6px;background:var(--lv);color:var(--onl);font-weight:800;font-size:11px;letter-spacing:.08em;padding:4px 8px}
+.live{display:inline-flex;align-items:center;gap:6px;background:var(--lv);color:var(--onl);font:800 11px/1.2 var(--sans);letter-spacing:.08em;padding:4px 8px}
 .live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--onl)}
 .btn{min-height:44px;display:flex;align-items:center;justify-content:center;font-weight:700;border:0;cursor:pointer;text-align:center;padding:0 12px}
 .bp{background:var(--pr);color:var(--onp)}
 .bs{background:transparent;color:var(--tx);border:1.5px solid var(--tx)}
-.bq{background:transparent;color:var(--tx);border:1px solid var(--bd)}
+.bq{background:transparent;color:var(--tx);border:1px solid var(--bs)}
+/* focus ring: 3px focus colour + mandatory 2px offset; inset variant for strips, rows and clipped blocks */
+.fr{outline:3px solid var(--fc);outline-offset:2px}
+.fri{outline:3px solid var(--fc);outline-offset:-3px;box-shadow:inset 0 0 0 5px var(--sf)!important}
 .ban{border-left:4px solid;padding:10px 12px;font-size:13px;color:var(--tx)}
-.ban.o{border-color:var(--dg);background:var(--dgt)}.ban.w{border-color:var(--wn);background:var(--wnt)}.ban.a{border-color:var(--ac);background:var(--act)}.ban.k{border-color:var(--ok);background:var(--tint)}
+.ban.o{border-color:var(--dg);background:var(--dgt)}.ban.w{border-color:var(--wn);background:var(--wnt)}.ban.a{border-color:var(--ac);background:var(--act)}.ban.k{border-color:var(--ok);background:var(--tint)}.ban.k b{color:var(--okl)}
 .st{font-weight:700;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
 .s-live{color:var(--lv)}.s-ok{color:var(--ok)}.s-dg{color:var(--dg)}.s-ac{color:var(--ac)}.s-t2{color:var(--t2)}.s-wn{color:var(--wn)}
 
 /* Ticker base */
 .t{font-size:13px;display:flex;flex-direction:column;flex:1;position:relative}
-.t .mono,.t .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+.t .mono,.t .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .t .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--bd);background:var(--sf);min-height:44px}
 .t .hd b{font-size:13px}.t .hd small{color:var(--t2);font-size:12px}
 .t .ttl{padding:8px 12px;background:var(--sf);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -40,10 +44,10 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .t .px .d{color:var(--ok);font-weight:700;font-size:13px}
 .t .grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bd);gap:1px}
 .t .grid.g3{grid-template-columns:repeat(3,1fr)}
-.t .grid div{background:var(--sf);padding:6px 8px}.t .grid small{display:block;color:var(--t2);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.t .grid div{background:var(--sf);padding:6px 8px}.t .grid small{display:block;color:var(--t2);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
 .t .grid span{font-weight:700;font-size:13px}
 .t table{width:100%;border-collapse:collapse;background:var(--sf)}
-.t th{font-size:10px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;text-align:left;padding:6px 12px;border-bottom:1px solid var(--bd);font-weight:600}
+.t th{font-size:11px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;text-align:left;padding:6px 12px;border-bottom:1px solid var(--bd);font-weight:600}
 .t td{padding:6px 12px;border-bottom:1px solid var(--bd);vertical-align:middle}.t td.r,.t th.r{text-align:right}
 .t tr.top td{font-weight:700}.t tr.top td:first-child{box-shadow:inset 3px 0 var(--ok)}
 .t .sp{flex:1}
@@ -58,10 +62,10 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .t .act .btn{border-radius:8px}
 
 /* Seller additions */
-.t .sec{font-size:10px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding:12px 12px 6px}
-.t .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:8px 12px;padding:2px;background:var(--bd);border-radius:10px}
-.t .seg span{min-height:44px;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--t2);border-radius:8px}
-.t .seg span.on{background:var(--sf);color:var(--tx);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.t .sec{font-size:11px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;padding:12px 12px 6px}
+.t .seg{display:grid;grid-template-columns:repeat(4,auto);gap:2px;margin:8px 12px;padding:2px;background:var(--bg);border:1px solid var(--bs);border-radius:10px}
+.t .seg span{min-height:44px;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--t2);border-radius:8px;padding:0 6px;white-space:nowrap}
+.t .seg span.on{background:var(--sf);color:var(--tx);font-weight:700;outline:2px solid var(--tx);outline-offset:-2px;box-shadow:0 1px 2px rgba(0,0,0,.12)}
 .t .list{background:var(--sf);border-top:1px solid var(--bd)}
 .t .it{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 12px;min-height:56px;border-bottom:1px solid var(--bd);background:var(--sf)}
 .t .it b{font-size:14px}.t .it .m{color:var(--t2);font-size:12px}
@@ -69,24 +73,24 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .t .chev{color:var(--t2);font-size:16px;margin-left:6px}
 .t .avatar{width:32px;height:32px;border-radius:50%;background:var(--pr);color:var(--onp);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
 .t .tabs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--bd);background:var(--sf);padding-bottom:10px}
-.t .tabs span{min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--t2);gap:2px}
+.t .tabs span{min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;font-weight:600;line-height:1.3;color:var(--t2);gap:2px}
 .t .tabs span i{font-style:normal;font-size:16px}
-.t .tabs span.on{color:var(--tx);font-weight:700}
+.t .tabs span.on{color:var(--tx);font-weight:700;box-shadow:inset 0 2px var(--tx)}
 .t .pad{padding:0 12px}
-.t .step{display:flex;gap:4px;padding:8px 12px 0}.t .step span{flex:1;height:4px;border-radius:2px;background:var(--bd)}.t .step span.on{background:var(--tx)}
+.t .step{display:flex;gap:4px;padding:8px 12px 0}.t .step span{flex:1;height:4px;border-radius:2px;background:var(--bs)}.t .step span.on{background:var(--tx)}
 .t .q{font-size:15px;font-weight:700;padding:14px 12px 8px}
 .t .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 12px}
-.t .opt{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:12px;min-height:72px;position:relative}
+.t .opt{background:var(--sf);border:1px solid var(--bs);border-radius:10px;padding:12px;min-height:72px;position:relative}
 .t .opt b{display:block;font-size:14px;padding-right:22px}.t .opt small{display:block;color:var(--t2);font-size:12px;margin-top:2px}
-.t .opt:after{content:"";position:absolute;right:10px;top:12px;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--t2)}
+.t .opt:after{content:"";position:absolute;right:10px;top:12px;width:16px;height:16px;border-radius:50%;border:1.5px solid var(--bs)}
 .t .opt.on{border:2px solid var(--tx);padding:11px}
-.t .opt.on:after{border:5px solid var(--tx);right:9px;top:11px}
+.t .opt.on:after{border:1.5px solid var(--tx);background:var(--tx);box-shadow:inset 0 0 0 3px var(--sf);right:9px;top:11px}
 .t .opt.wide{grid-column:1/3}
 .t .sub{margin:8px 0 0;padding-top:8px;border-top:1px solid var(--bd);display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .t .fld{padding:6px 12px}
 .t .fld label{display:block;font-size:12px;font-weight:600;color:var(--tx);margin-bottom:4px}
 .t .fld label small{font-weight:400;color:var(--t2)}
-.t .in{min-height:44px;background:var(--sf);border:1px solid var(--bd);display:flex;align-items:center;padding:0 12px;font-size:14px;color:var(--tx);justify-content:space-between}
+.t .in{min-height:44px;background:var(--sf);border:1px solid var(--bs);display:flex;align-items:center;padding:0 12px;font-size:14px;color:var(--tx);justify-content:space-between}
 .t .in.ta{align-items:flex-start;padding:10px 12px;min-height:84px;line-height:1.45}
 .t .in.err{border:2px solid var(--dg);padding:0 11px}
 .t .in .ph2{color:var(--t2)}
@@ -98,19 +102,19 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .t .slot.add{background:transparent;border:1.5px dashed var(--t2);color:var(--tx);font-size:18px}
 .t .slot.cov{box-shadow:inset 0 0 0 2px var(--tx)}
 .t .chips{display:flex;gap:6px}
-.t .chip{min-height:44px;min-width:60px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bd);background:var(--sf);font-weight:700;padding:0 10px}
+.t .chip{min-height:44px;min-width:60px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bs);background:var(--sf);font-weight:700;padding:0 10px}
 .t .chip.on{background:var(--pr);color:var(--onp);border-color:var(--pr)}
 .t .tg{display:flex;justify-content:space-between;align-items:center;min-height:44px}
 .t .sw{width:44px;height:26px;border-radius:13px;background:var(--tx);position:relative;flex:none}
-.t .sw:after{content:"";position:absolute;right:3px;top:3px;width:20px;height:20px;border-radius:50%;background:var(--sf)}
-.t .sw.off{background:var(--bd)}.t .sw.off:after{right:auto;left:3px}
+.t .sw:after{content:"✓";position:absolute;right:3px;top:3px;width:20px;height:20px;border-radius:50%;background:var(--sf);color:var(--tx);font:700 12px/20px var(--sans);text-align:center}
+.t .sw.off{background:var(--bs)}.t .sw.off:after{content:"";right:auto;left:3px;box-shadow:0 0 0 1px var(--bs)}
 .t .copy{display:grid;grid-template-columns:1fr auto;gap:6px;padding:4px 12px}
 .t .copy .in{font-size:13px}
-.t .sig{display:inline-block;font-size:11px;font-weight:600;color:var(--t2);background:var(--bg);border:1px solid var(--bd);padding:2px 6px;margin-left:6px;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.t .sig{display:inline-block;font-size:11px;font-weight:600;color:var(--t2);background:var(--bg);border:1px solid var(--bd);padding:2px 6px;margin-left:6px;white-space:nowrap;font-family:var(--sans)}
 .t .more{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--tx);font-size:18px;font-weight:700}
-.t .more.on{background:var(--bg);border:1px solid var(--bd)}
+.t .more.on{background:var(--bg);border:1px solid var(--bs)}
 /* control-room rows */
-.t .cr-h{display:grid;grid-template-columns:1fr 82px 36px 58px;gap:6px;padding:6px 12px;font-size:10px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;border-bottom:1px solid var(--bd);background:var(--sf)}
+.t .cr-h{display:grid;grid-template-columns:1fr 82px 36px 58px;gap:6px;padding:6px 12px;font-size:11px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;border-bottom:1px solid var(--bd);background:var(--sf)}
 .t .cr{display:grid;grid-template-columns:1fr 82px 36px 58px;gap:6px;align-items:center;padding:8px 12px;min-height:56px;border-bottom:1px solid var(--bd);background:var(--sf)}
 .t .cr b{font-size:13px;display:block}.t .cr small{color:var(--t2);font-size:11px;display:block}
 .t .cr .num{text-align:right}.t .cr .bid{font-weight:700}
@@ -119,7 +123,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .t .cr.flash .bid{color:var(--tx)}
 .t .cr .st{text-align:right}
 .t .cr.sel{box-shadow:inset 3px 0 var(--tx);background:var(--bg)}
-.t .tag{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:2px 8px;font-size:11px;font-weight:700;color:var(--tx);border:1px solid var(--bd);background:var(--sf);white-space:nowrap}
+.t .tag{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:2px 8px;font-size:11px;font-weight:700;color:var(--tx);border:1px solid var(--bs);background:var(--sf);white-space:nowrap}
 .t .tag:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--t2)}
 .t .tag.aw{background:var(--wnt);border-color:var(--wn)}.t .tag.aw:before{background:var(--wn)}
 .t .tag.pd{background:var(--tint);border-color:var(--ok)}.t .tag.pd:before{background:var(--ok)}
@@ -134,7 +138,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .t .res .btn{font-size:13px}
 .t .scrim{position:absolute;inset:0;background:var(--scrim)}
 .t .sheet{position:absolute;left:0;right:0;bottom:0;background:var(--sf);border-radius:10px 10px 0 0;padding:8px 12px 18px;box-shadow:0 -4px 20px rgba(0,0,0,.25)}
-.t .sheet .grab{width:40px;height:4px;border-radius:2px;background:var(--bd);margin:0 auto 12px}
+.t .sheet .grab{width:40px;height:4px;border-radius:2px;background:var(--bs);margin:0 auto 12px}
 .t .sheet h3{font-size:18px;margin-bottom:4px}
 .t .sheet p{color:var(--t2);font-size:13px;margin-bottom:10px}
 .t .sheet .grid{margin:0 0 12px}
@@ -144,7 +148,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .t .menu div:last-child{border-bottom:0}
 .t .menu b{font-size:14px}.t .menu small{color:var(--t2);font-size:12px}
 .t .menu .dz b{color:var(--dg)}
-.t .empty{margin:24px 12px;padding:28px 18px;text-align:center;background:var(--sf);border:1px dashed var(--bd);border-radius:10px}
+.t .empty{margin:24px 12px;padding:28px 18px;text-align:center;background:var(--sf);border:1px dashed var(--bs);border-radius:10px}
 .t .empty .ic{font-size:28px;margin-bottom:8px}
 .t .empty b{display:block;font-size:16px;margin-bottom:6px}
 .t .empty p{color:var(--t2);font-size:13px}
@@ -158,8 +162,8 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .dk{display:grid;grid-template-columns:200px 1fr 340px;min-height:620px}
 .dk .nav{background:var(--sf);border-right:1px solid var(--bd);padding:12px 8px}
 .dk .nav .brand{font-weight:800;padding:8px 10px 14px;font-size:14px}
-.dk .nav span{display:flex;align-items:center;min-height:44px;padding:0 10px;border-radius:8px;color:var(--t2);font-weight:600}
-.dk .nav span.on{background:var(--bg);color:var(--tx)}
+.dk .nav span{display:flex;align-items:center;min-height:44px;padding:0 10px;border-radius:0 8px 8px 0;color:var(--t2);font-weight:600}
+.dk .nav span.on{background:var(--bg);color:var(--tx);font-weight:700;box-shadow:inset 3px 0 var(--tx)}
 .dk .main{display:flex;flex-direction:column;border-right:1px solid var(--bd)}
 .dk .side{background:var(--sf);display:flex;flex-direction:column}
 .dk .cr-h,.dk .cr{grid-template-columns:1fr 130px 110px 60px 80px}
@@ -170,7 +174,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 .note{max-width:1100px;margin:0 auto;font-size:13px;color:#3F3F46}
 </style></head><body>
 
-<div class="intro"><h1>BidBoard · Seller key screens</h1><p>Same product as the approved buyer hero: <b>Ledger</b> palette (monochrome, colour only for status), <b>Ticker</b> density with monospaced tabular figures, hairline rows, and softened corners — 8px controls, 6px pills and status, 10px blocks; full-width strips stay square.</p><p>Seller: <b>Liza's Timepieces</b> (Liza), signed in with Facebook, mostly on phone, sometimes on a laptop. All amounts in ₱.</p></div>
+<div class="intro"><h1>BidBoard · Seller key screens</h1><p>Same product as the approved buyer hero: <b>Ledger</b> palette (monochrome, colour only for status), <b>Ticker</b> density with monospaced tabular figures, hairline rows, and softened corners — 8px controls, 6px pills and status, 10px blocks; full-width strips stay square.</p><p>Seller: <b>Liza's Timepieces</b> (Liza), signed in with Facebook, mostly on phone, sometimes on a laptop. All amounts in ₱. Final tokens, type and microcopy come from <b>DESIGN.md</b> and <b>EXPERIENCE.md</b>; if anything here disagrees, those documents win. Every frame shows one control in its keyboard-focus state.</p></div>
 
 <!-- 1 DASHBOARD -->
 <h2 class="sec">1 · Dashboard</h2>
@@ -178,8 +182,8 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="phone L"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="url">🔒 bidboard.app/seller</div><div class="t">
 <div class="hd"><span style="display:flex;align-items:center;gap:8px"><span class="avatar">LT</span><b>Liza's Timepieces</b></span><small>Today</small></div>
 <div class="grid g3"><div><small>Bids today</small><span class="num">63</span></div><div><small>Items sold</small><span class="num">3</span></div><div><small>Winning bids</small><span class="num">₱12,450</span></div></div>
-<div class="pad"><div class="btn bp" style="min-height:48px;font-size:15px">+ New auction</div></div>
-<div class="seg"><span class="on">Live (2)</span><span>Scheduled (1)</span><span>Ended</span></div>
+<div class="pad"><div class="btn bp fr" style="min-height:48px;font-size:15px">+ New auction</div></div>
+<div class="seg" role="tablist"><span class="on" role="tab" aria-selected="true">Live (2)</span><span role="tab">Scheduled (1)</span><span role="tab">Ended</span><span role="tab">Drafts</span></div>
 <div class="list">
 <div class="it"><div><b>Batch 0416</b><div class="m num">6 items · 47 bids</div></div><div class="rt"><span class="live">LIVE</span><div class="clk mono" style="margin-top:4px">02:14 left</div></div></div>
 <div class="it"><div><b>Swatch Irony Chrono</b><div class="m num">Single item · ₱900 lead</div></div><div class="rt"><span class="st s-ac">● Open</span><div class="m num" style="margin-top:4px">9 bids</div></div></div>
@@ -191,7 +195,21 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="sp"></div>
 <div class="tabs"><span class="on"><i>▦</i>Auctions</span><span><i>✓</i>Results</span><span><i>⊘</i>Blocked</span><span><i>☺</i>Account</span></div>
 </div></div>
-<p class="cap"><b>Dashboard.</b> Today's numbers up top, one dominant <b>New auction</b> button, then Live · Scheduled · Ended. Live rows show a red LIVE pill and countdown for timed auctions, or a blue “Open” status with bid count for open-ended ones. Tapping a live row opens its control room. “Scheduled (1)” is previewed below as “Next up”.</p></div></div>
+<p class="cap"><b>Dashboard.</b> Today's numbers up top, one dominant <b>New auction</b> button, then Live · Scheduled · Ended · Drafts (the selected segment carries a 2px ink outline). Live rows show a red LIVE pill and countdown for timed auctions, or a blue “Open” status with bid count for open-ended ones. Tapping a live row opens its control room. “Scheduled (1)” is previewed below as “Next up”. The active tab is ink, bold, with a 2px ink bar above it.</p></div>
+<div><p class="lbl">Dark · Drafts tab</p>
+<div class="phone D"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="url">🔒 bidboard.app/seller</div><div class="t">
+<div class="hd"><span style="display:flex;align-items:center;gap:8px"><span class="avatar">LT</span><b>Liza's Timepieces</b></span><small>Today</small></div>
+<div class="grid g3"><div><small>Bids today</small><span class="num">63</span></div><div><small>Items sold</small><span class="num">3</span></div><div><small>Winning bids</small><span class="num">₱12,450</span></div></div>
+<div class="pad"><div class="btn bp" style="min-height:48px;font-size:15px">+ New auction</div></div>
+<div class="seg" role="tablist"><span role="tab">Live (2)</span><span role="tab">Scheduled (1)</span><span role="tab">Ended</span><span class="on fr" role="tab" aria-selected="true">Drafts</span></div>
+<div class="list">
+<div class="it"><div><b>Batch 0423</b><div class="m num">4 items · timed · not published</div></div><div class="rt"><span class="m">Draft</span><span class="chev">›</span></div></div>
+<div class="it"><div><b>Seiko Presage Cocktail Time</b><div class="m num">Single item · open-ended · base ₱9,000</div></div><div class="rt"><span class="m">Draft</span><span class="chev">›</span></div></div>
+</div>
+<div class="sp"></div>
+<div class="tabs"><span class="on"><i>▦</i>Auctions</span><span><i>✓</i>Results</span><span><i>⊘</i>Blocked</span><span><i>☺</i>Account</span></div>
+</div></div>
+<p class="cap"><b>Drafts.</b> Saved but unpublished auctions. Tapping a draft reopens Create where she left off. Focus is on the selected segment.</p></div></div>
 
 <!-- 2 CREATE -->
 <h2 class="sec">2 · Create auction</h2>
@@ -210,7 +228,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="opt wide"><b>Open-ended</b><small>You close it when you're ready. Bidders see “Open — Liza closes this manually”.</small></div>
 </div>
 <div class="sp"></div>
-<div class="act"><div class="btn bp full" style="min-height:48px;font-size:16px">Next: add items</div></div>
+<div class="act"><div class="btn bp full fr" style="min-height:48px;font-size:16px">Next: add items</div></div>
 </div></div>
 <p class="cap"><b>Create · step 1.</b> Two plain choices: Single item / Batch, then Timed / Open-ended. Timed reveals date and time pickers and the anti-sniping rule in one line. Open-ended explains who closes it.</p></div>
 
@@ -223,19 +241,19 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="fld"><label>Title</label><div class="in">Casio G-Shock DW-5600E</div></div>
 <div class="fld"><label>Condition &amp; description</label><div class="in ta">Pre-loved, light scratches on bezel. New strap, battery replaced Sept. Box not included.</div></div>
 <div class="two"><div class="fld"><label>Base price</label><div class="in num">₱4,000</div></div><div class="fld"><label>Bid increment</label><div class="chips"><span class="chip num">₱50</span><span class="chip num on">₱100</span><span class="chip num">₱500</span></div></div></div>
-<div class="fld"><div class="tg"><label style="margin:0">Buyout price <small>· optional</small></label><span class="sw" role="switch" aria-checked="true"></span></div>
+<div class="fld"><div class="tg"><label style="margin:0">Buyout price <small>· optional</small></label><span class="sw fr" role="switch" aria-checked="true"></span></div>
 <div class="in num err">₱3,500</div><div class="errm">⚠ Buyout must be above the base price (₱4,000).</div></div>
 <div class="sp"></div>
 <div class="act"><div class="btn bp full" style="min-height:48px;font-size:16px">Save item</div></div>
 </div></div>
-<p class="cap"><b>Create · step 2.</b> Up to 6 photo slots (first is the cover), title, description, base price, increment as one-tap chips, and an optional buyout toggle. Validation is inline and says exactly what to change: here the buyout is below base.</p></div>
+<p class="cap"><b>Create · step 2.</b> Up to 6 photo slots (first is the cover), title, description, base price, increment as one-tap chips, and an optional buyout toggle (on = ink track with a ✓ knob; focus shown on it). Validation is inline and says exactly what to change: here the buyout is below base.</p></div>
 
 <div><p class="lbl">Step 2 · Batch variant</p>
 <div class="phone L"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="url">🔒 bidboard.app/seller/new</div><div class="t">
 <div class="hd"><b>‹ &nbsp;Batch 0416 · Items</b><small>Step 2 of 2</small></div>
 <div class="step"><span class="on"></span><span class="on"></span></div>
 <div class="ban a">Timed · ends <b class="num">Thu 16 Oct, 9:00 PM</b> · late bids extend 30s</div>
-<div class="hh" style="display:grid;grid-template-columns:1fr auto;padding:6px 12px;font-size:10px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;border-bottom:1px solid var(--bd)"><span>Item</span><span>Base · Incr · Buyout</span></div>
+<div class="hh" style="display:grid;grid-template-columns:1fr auto;padding:6px 12px;font-size:11px;color:var(--t2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;border-bottom:1px solid var(--bd)"><span>Item</span><span>Base · Incr · Buyout</span></div>
 <div class="list">
 <div class="it"><div><b>Seiko 5 SNK809</b><div class="m">4 photos</div></div><div class="rt num">₱4,000 · ₱100 · ₱8,000<span class="chev">›</span></div></div>
 <div class="it"><div><b>Casio F-91W</b><div class="m">3 photos</div></div><div class="rt num">₱400 · ₱50 · —<span class="chev">›</span></div></div>
@@ -246,9 +264,9 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 </div>
 <div class="pad" style="margin-top:10px"><div class="btn bs">+ Add item</div></div>
 <div class="sp"></div>
-<div class="act"><div class="btn bq">Save draft</div><div class="btn bp" style="min-height:48px">Publish · 6 items</div></div>
+<div class="act"><div class="btn bq">Save draft</div><div class="btn bp fr" style="min-height:48px">Publish · 6 items</div></div>
 </div></div>
-<p class="cap"><b>Create · batch.</b> Items added so far, each with its own base / increment / buyout. <b>Add item</b> opens the step-2 form. One Publish for the whole batch; drafts can be saved.</p></div>
+<p class="cap"><b>Create · batch.</b> Items added so far, each with its own base / increment / buyout. <b>Add item</b> opens the step-2 form. One Publish for the whole batch; drafts can be saved. The first Publish opens Seller profile (§7) until a Messenger link is saved.</p></div>
 </div>
 
 <!-- 3 SHARE -->
@@ -258,7 +276,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="hd"><b>Batch 0416</b><span class="live">LIVE</span></div>
 <div class="ban k"><b>Batch 0416 is live.</b> Post the link where your buyers are.</div>
 <div class="fld"><label>Auction link</label></div>
-<div class="copy"><div class="in mono">bidboard.app/liza/b/0416</div><div class="btn bs" style="min-width:76px;border-radius:8px">Copy</div></div>
+<div class="copy"><div class="in mono">bidboard.app/liza/b/0416</div><div class="btn bs fr" style="min-width:76px;border-radius:8px">Copy</div></div>
 <div class="fld" style="margin-top:6px"><label>Facebook caption <small>· edit before posting</small></label>
 <div class="in ta" style="min-height:150px">🔨 LIVE AUCTION — 6 pre-loved watches. Bid here: bidboard.app/liza/b/0416 · Ends tonight 9PM · Late bids extend 30s. No 'mine/steal' in comments — bids on BidBoard only.</div>
 <div class="hint num">213 characters</div></div>
@@ -278,7 +296,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="grid"><div><small>Bids</small><span class="num">47</span></div><div><small>Bidders</small><span class="num">19</span></div><div><small>With bids</small><span class="num">4/6</span></div><div><small>Total</small><span class="num">₱12,550</span></div></div>
 <div class="cr-h"><span>Item · leader</span><span style="text-align:right">Bid</span><span style="text-align:right">#</span><span style="text-align:right">Status</span></div>
 <div class="cr flash"><div><b>Seiko 5 SNK809</b><small>Marco R.</small></div><div class="num"><span class="bid">₱4,600</span><span class="tick">▲ +100</span></div><span class="num">17</span><span class="st s-live">Live</span></div>
-<div class="cr"><div><b>Orient Bambino v2</b><small>Ben T.</small></div><div class="num bid">₱6,200</div><span class="num">13</span><span class="st s-live">Live</span></div>
+<div class="cr fri"><div><b>Orient Bambino v2</b><small>Ben T.</small></div><div class="num bid">₱6,200</div><span class="num">13</span><span class="st s-live">Live</span></div>
 <div class="cr"><div><b>Timex Weekender</b><small>Ana P.</small></div><div class="num bid">₱1,100</div><span class="num">9</span><span class="st s-live">Live</span></div>
 <div class="cr"><div><b>Casio F-91W</b><small>J. Cruz</small></div><div class="num bid">₱650</div><span class="num">8</span><span class="st s-live">Live</span></div>
 <div class="cr"><div><b>Citizen Eco-Drive</b><small>—</small></div><div class="num s-t2">₱3,000</div><span class="num">0</span><span class="st s-t2">No bids</span></div>
@@ -286,7 +304,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="sp"></div>
 <div class="act"><div class="btn bq">Share link</div><div class="btn bp" style="min-height:48px">Close all</div></div>
 </div></div>
-<p class="cap"><b>Control room.</b> One row per item: current bid, bid count, leader and status. The item just bid on gets a green edge and <b class="num">▲ +100</b> tick (120ms flash, hard cut). Rows sort by most recent activity; tap a row for its ladder. <b>Close all</b> sits in the fixed bar.</p></div>
+<p class="cap"><b>Control room.</b> One row per item: current bid, bid count, leader and status. The item just bid on gets a green edge and <b class="num">▲ +100</b> tick (120ms flash, hard cut). Rows sort by most recent activity; tap a row for its ladder. Focused rows use the inset ring. <b>Close all</b> sits in the fixed bar.</p></div>
 
 <div><p class="lbl">Light · item ladder + ⋯ menu</p>
 <div class="phone L"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="url">🔒 bidboard.app/seller/b/0416/1</div><div class="t">
@@ -301,11 +319,11 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <tr><td>Ben T.</td><td class="r num">₱4,300</td><td class="r" style="color:var(--t2)">5m</td><td class="r" style="padding:0 4px"><span class="more" aria-label="More for Ben T.">⋯</span></td></tr>
 <tr><td>Marco R.</td><td class="r num">₱4,200</td><td class="r" style="color:var(--t2)">6m</td><td class="r" style="padding:0 4px"><span class="more" aria-label="More for Marco R.">⋯</span></td></tr>
 </table>
-<div class="menu" style="top:356px"><div><b>View Facebook profile</b></div><div><b>Message on Messenger</b></div><div class="dz"><b>Block from my auctions</b><small>They can't place new bids on your auctions. You can unblock anytime.</small></div></div>
+<div class="menu" style="top:356px"><div class="dz fri"><b>Block from my auctions</b><small>They can't place new bids on your auctions. You can unblock anytime.</small></div></div>
 <div class="sp"></div>
 <div class="act"><div class="btn bp full" style="min-height:48px">Close now · Marco R. wins ₱4,600</div></div>
 </div></div>
-<p class="cap"><b>Item ladder.</b> Full bid history with real names (sellers see who's bidding). J. Cruz carries the neutral signal <span style="font-family:ui-monospace,Menlo,monospace">2 unpaid wins · 90d</span> — grey, factual, from BidBoard records only. <b>⋯</b> opens <b>Block from my auctions</b>. <b>Close now</b> ends just this item and names the winner first.</p></div>
+<p class="cap"><b>Item ladder.</b> Full bid history with real names (sellers see who's bidding). J. Cruz carries the neutral signal <span style="font-family:ui-monospace,Menlo,monospace">2 unpaid wins · 90d</span> — grey, factual, from BidBoard records only. <b>⋯</b> opens one action: <b>Block from my auctions</b> (<b>Unblock</b> when already blocked) — no profile or Messenger actions. Focus moves into the menu. <b>Close now</b> ends just this item and names the winner first.</p></div>
 
 <div><p class="lbl">Light · Close all confirmation</p>
 <div class="phone L"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="url">🔒 bidboard.app/seller/b/0416</div><div class="t">
@@ -319,7 +337,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <p>6 items, 4 have bids → 4 winners. The 2 items with no bids end unsold. Bidders are told the auction closed early.</p>
 <div class="grid"><div><small>Items</small><span class="num">6</span></div><div><small>Winners</small><span class="num">4</span></div><div><small>Unsold</small><span class="num">2</span></div><div><small>Total</small><span class="num">₱12,550</span></div></div>
 <div class="ban w" style="margin:0 0 6px">Closing can't be undone.</div>
-<div class="btn bp" style="min-height:48px;font-size:15px">Close all 6 items</div>
+<div class="btn bp fr" style="min-height:48px;font-size:15px">Close all 6 items</div>
 <div class="btn bs">Keep bidding open</div></div>
 </div></div>
 <p class="cap"><b>Confirm Close all.</b> A bottom sheet spells out the outcome in numbers before anything ends: 6 items, 4 have bids → 4 winners, 2 unsold. The safe choice is always visible.</p></div>
@@ -339,7 +357,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="cr"><div><b>Citizen Eco-Drive</b><small>—</small></div><div class="num s-t2">₱3,000</div><span class="num">0</span><span class="st s-t2">No bids</span></div>
 <div class="cr"><div><b>Casio G-Shock DW-5600E</b><small>—</small></div><div class="num s-t2">₱4,000</div><span class="num">0</span><span class="st s-t2">No bids</span></div>
 <div class="sp"></div>
-<div class="act"><div class="btn bq">Share link</div><div class="btn bp" style="min-height:48px">Close all</div></div>
+<div class="act"><div class="btn bq">Share link</div><div class="btn bp fr" style="min-height:48px">Close all</div></div>
 </div></div>
 <p class="cap"><b>Control room · dark.</b> Same layout, dark Ledger tokens. The neutral signal also appears next to a leader on the overview, so Liza notices it before the close.</p></div>
 
@@ -357,7 +375,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <tr><td>Ben T.</td><td class="r num">₱750</td><td class="r" style="color:var(--t2)">3h</td><td class="r" style="padding:0 4px"><span class="more">⋯</span></td></tr>
 </table>
 <div class="sp"></div>
-<div class="act"><div class="btn bp full" style="min-height:48px;font-size:15px">Close &amp; award · Ana P. ₱900</div></div>
+<div class="act"><div class="btn bp full fr" style="min-height:48px;font-size:15px">Close &amp; award · Ana P. ₱900</div></div>
 </div></div>
 <p class="cap"><b>Open-ended control.</b> No clock — the blue OPEN status replaces it. The single action is <b>Close &amp; award</b>, which names the winner and amount before she taps.</p></div>
 </div>
@@ -388,10 +406,10 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <tr><td>Marco R.</td><td class="r num">₱4,200</td><td class="r" style="color:var(--t2)">6m</td><td style="padding:0 4px"><span class="more">⋯</span></td></tr>
 </table>
 <div class="sp"></div>
-<div style="padding:12px;border-top:1px solid var(--bd)"><div class="btn bs" style="border-radius:8px">Close now · Marco R. wins ₱4,600</div></div>
+<div style="padding:12px;border-top:1px solid var(--bd)"><div class="btn bs fr" style="border-radius:8px">Close now · Marco R. wins ₱4,600</div></div>
 </div>
 </div></div></div>
-<p class="cap" style="max-width:1100px"><b>Control room · laptop.</b> Same components, master–detail: navigation left, the item table in the middle (selected row has a dark edge and tinted ground; the ▲ tick marks the latest bid), and the selected item's ladder on the right with per-item <b>Close now</b>. <b>Close all</b> stays top right of the batch header.</p></div></div>
+<p class="cap" style="max-width:1100px"><b>Control room · laptop.</b> Same components, master–detail: navigation left, the item table in the middle (selected row has an ink edge and tinted ground; the active nav item is bold with an ink edge; the ▲ tick marks the latest bid), and the selected item's ladder on the right with per-item <b>Close now</b>. <b>Close all</b> stays top right of the batch header.</p></div></div>
 
 <!-- 5 RESULTS -->
 <h2 class="sec">5 · Results</h2>
@@ -401,19 +419,18 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="grid"><div><small>Winners</small><span class="num">4</span></div><div><small>Paid</small><span class="num">1</span></div><div><small>Awaiting</small><span class="num">2</span></div><div><small>Unpaid</small><span class="num">1</span></div></div>
 <div class="list">
 <div class="res"><div class="top"><b>Seiko 5 SNK809</b><span class="tag aw">Awaiting payment</span></div><div class="who"><span>Winner · Marco R.</span><span class="num">₱4,600</span></div>
-<div class="acts"><div class="btn bp full">Message on Messenger</div><div class="btn bq">Mark paid</div><div class="btn bq">Mark unpaid</div></div></div>
-<div class="res"><div class="top"><b>Orient Bambino v2</b><span class="tag pd">Paid</span></div><div class="who"><span>Winner · Ben T.</span><span class="num">₱6,200</span></div>
-<div class="acts"><div class="btn bq full">Message on Messenger</div></div></div>
+<div class="acts"><div class="btn bq fr">Mark paid</div><div class="btn bq">Mark unpaid</div></div></div>
+<div class="res"><div class="top"><b>Orient Bambino v2</b><span class="tag pd">Paid</span></div><div class="who"><span>Winner · Ben T.</span><span class="num">₱6,200</span></div></div>
 <div class="res"><div class="top"><b>Casio F-91W</b><span class="tag up">Unpaid</span></div><div class="who"><span>Winner · J. Cruz</span><span class="num">₱650</span></div>
-<div class="acts"><div class="btn bp full">Offer to next bidder · Ana P. ₱600</div><div class="btn bq full">Message on Messenger</div></div></div>
+<div class="acts"><div class="btn bs full">Offer to next bidder · Ana P. ₱600</div></div></div>
 <div class="res"><div class="top"><b>Timex Weekender</b><span class="tag aw">Awaiting payment</span></div><div class="who"><span>Winner · Ana P.</span><span class="num">₱1,100</span></div>
-<div class="acts"><div class="btn bp full">Message on Messenger</div><div class="btn bq">Mark paid</div><div class="btn bq">Mark unpaid</div></div></div>
+<div class="acts"><div class="btn bq">Mark paid</div><div class="btn bq">Mark unpaid</div></div></div>
 <div class="res"><div class="top"><b>Citizen Eco-Drive</b><span class="tag">No bids</span></div><div class="who"><span>Base ₱3,000</span><span></span></div></div>
 <div class="res"><div class="top"><b>Casio G-Shock DW-5600E</b><span class="tag">No bids</span></div><div class="who"><span>Base ₱4,000</span><span></span></div></div>
 </div>
 <div class="hint pad" style="padding:10px 12px 16px">“Mark unpaid” adds to the winner's unpaid count, shown to sellers as a neutral number (e.g. “1 unpaid win · 90d”). The winner isn't labelled or notified of a rating.</div>
 </div></div>
-<p class="cap"><b>Results.</b> One card per item: winner, winning bid and a status chip — Awaiting payment (amber), Paid (green), Unpaid (red), No bids (grey). Chips always pair colour with a word. <b>Message on Messenger</b> opens the winner's Facebook profile chat. <b>Mark unpaid</b> feeds the neutral signal and unlocks <b>Offer to next bidder</b> at their last bid.</p></div></div>
+<p class="cap"><b>Results.</b> One card per item: winner, winning bid and a status chip — Awaiting payment (amber), Paid (green), Unpaid (red), No bids (grey). Chips always pair colour with a word. Full names let Liza match each incoming Messenger chat — winners message her from their Win screen, so there is no Messenger action here. <b>Mark paid</b> / <b>Mark unpaid</b> are quiet buttons; <b>Mark unpaid</b> feeds the neutral signal and unlocks <b>Offer to next bidder</b> at their last bid.</p></div></div>
 
 <!-- 6 BLOCKED -->
 <h2 class="sec">6 · Blocked bidders</h2>
@@ -423,7 +440,7 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="hd"><b>‹ &nbsp;Blocked bidders</b><small class="num">2</small></div>
 <div class="ban a">Blocked people can't place new bids on any of your auctions. Only you can see this list.</div>
 <div class="list">
-<div class="it"><div><b>J. Cruz</b><div class="m num">Blocked 16 Oct · from Batch 0416 <span class="sig" style="margin-left:0">2 unpaid wins · 90d</span></div></div><div class="btn bs" style="border-radius:8px;min-width:88px">Unblock</div></div>
+<div class="it"><div><b>J. Cruz</b><div class="m num">Blocked 16 Oct · from Batch 0416 <span class="sig" style="margin-left:0">2 unpaid wins · 90d</span></div></div><div class="btn bs fr" style="border-radius:8px;min-width:88px">Unblock</div></div>
 <div class="it"><div><b>Rina S.</b><div class="m num">Blocked 2 Sep · from Batch 0402</div></div><div class="btn bs" style="border-radius:8px;min-width:88px">Unblock</div></div>
 </div>
 <div class="sp"></div>
@@ -436,10 +453,38 @@ h2.sec{max-width:1100px;margin:8px auto 14px;font-size:16px;color:#18181B}
 <div class="hd"><b>‹ &nbsp;Blocked bidders</b><small class="num">0</small></div>
 <div class="empty"><div class="ic">⊘</div><b>No one is blocked</b><p>If someone keeps winning and not paying, tap <b style="display:inline;font-size:13px">⋯</b> next to their bid and choose <b style="display:inline;font-size:13px">Block from my auctions</b>. You can unblock them here anytime.</p></div>
 <div class="sp"></div>
-<div class="tabs"><span><i>▦</i>Auctions</span><span><i>✓</i>Results</span><span class="on"><i>⊘</i>Blocked</span><span><i>☺</i>Account</span></div>
+<div class="tabs"><span><i>▦</i>Auctions</span><span><i>✓</i>Results</span><span class="on fri"><i>⊘</i>Blocked</span><span><i>☺</i>Account</span></div>
 </div></div>
-<p class="cap"><b>Empty state.</b> Explains where blocking happens instead of showing a blank list.</p></div>
+<p class="cap"><b>Empty state.</b> Explains where blocking happens instead of showing a blank list. The focused tab uses the inset ring inside the bar.</p></div>
 </div>
 
-<p class="note">Tap targets: buttons, chips, segments, ⋯ and list rows ≥44px; primary bars 48px. Status colour is always paired with a word or symbol. Figures use ui-monospace tabular numerals throughout. Motion (implied): bid flash is a 120ms colour tick, no easing.</p>
+<!-- 7 SELLER PROFILE -->
+<h2 class="sec">7 · Seller profile</h2>
+<div class="row">
+<div><p class="lbl">Light · first publish (validation)</p>
+<div class="phone L"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="url">🔒 bidboard.app/seller/profile</div><div class="t">
+<div class="hd"><b>‹ &nbsp;Seller profile</b><small>Before you publish</small></div>
+<div class="ban a">Set this once. Winners see your shop name and use your Messenger link to arrange payment.</div>
+<div class="fld"><label>Shop name</label><div class="in">Liza's Timepieces</div></div>
+<div class="fld"><label>Shop link</label><div class="in mono">bidboard.app/liza</div></div>
+<div class="fld"><label>Messenger link</label><div class="in mono err fr">facebook.com/lizastimepieces</div><div class="errm">⚠ Enter your Messenger link — it starts with m.me/</div><div class="hint">Winners use this to message you. It starts with m.me/</div></div>
+<div class="sp"></div>
+<div class="act"><div class="why" style="grid-column:1/3;font-size:12px;color:var(--t2)">Fix 1 item to publish</div><div class="btn full dis" style="min-height:48px;font-size:15px;background:var(--sfd);color:var(--ikd)">Save and publish</div></div>
+</div></div>
+<p class="cap"><b>Seller profile · first publish.</b> Required once, before the first auction goes live. A Facebook page URL is not a Messenger link, so the field names the fix; <b>Save and publish</b> stays disabled with its reason in text. Focus is on the field in error.</p></div>
+
+<div><p class="lbl">Dark · Account tab</p>
+<div class="phone D"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="url">🔒 bidboard.app/seller/profile</div><div class="t">
+<div class="hd"><b>Account</b><small>Seller profile</small></div>
+<div class="fld" style="margin-top:6px"><label>Shop name</label><div class="in">Liza's Timepieces</div></div>
+<div class="fld"><label>Shop link</label><div class="in mono">bidboard.app/liza</div></div>
+<div class="fld"><label>Messenger link</label><div class="in mono fr">m.me/lizastimepieces</div><div class="hint">Winners use this to message you. It starts with m.me/</div></div>
+<div class="pad" style="margin-top:10px"><div class="btn bp" style="min-height:48px;font-size:15px">Save</div></div>
+<div class="sp"></div>
+<div class="tabs"><span><i>▦</i>Auctions</span><span><i>✓</i>Results</span><span><i>⊘</i>Blocked</span><span class="on"><i>☺</i>Account</span></div>
+</div></div>
+<p class="cap"><b>Seller profile · Account tab.</b> The same inputs (border-strong frame, 44px) for later edits. Whatever else Account holds is still open (OQ-3). Focus is on the Messenger link field.</p></div>
+</div>
+
+<p class="note">Tap targets: buttons, chips, segments, ⋯ and list rows ≥44px; primary bars 48px. Status colour is always paired with a word or symbol. Words use Inter and figures JetBrains Mono (tabular), with system fallbacks — no network fonts. Control frames use border-strong; hairlines are decorative only. Motion (implied): bid flash is a 120ms colour tick, no easing.</p>
 </body></html>
